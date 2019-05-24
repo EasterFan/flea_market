@@ -33,13 +33,13 @@
                 int limitMin=(pn-1)*perPage;
                 GoodsHandle goodHandle=new GoodsHandle();
                 UserHandle userHandle =new UserHandle();
-                CollectHandle collectHandle=new CollectHandle();
+                RecommendHandle recommendHandle=new RecommendHandle();
                 List <Goods> list=null;
                 IntHolder num = new IntHolder(0);
                 %>
                 <%
                 out.println("<span class=\"list-group-item list-group-item-info\">向您推荐</span>");
-                list = collectHandle.findGoodsByUser(user, num, limitMin, perPage);
+                list = recommendHandle.findGoodsByUser(user, num, limitMin, perPage);
                   if(list.size()!=0){
                     for(Goods good:list){
                     if(good.getProducter_id()==null)continue;
@@ -126,5 +126,5 @@ function delete_collect(goodsid){
 <%
 userHandle.close();
 goodHandle.close();
-collectHandle.close();
+recommendHandle.close();
 %>
